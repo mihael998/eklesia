@@ -17,6 +17,10 @@ class User extends Authenticatable
     protected $fillable = [
         'nome', 'email', 'pwd','cognome','ruolo','telefono'
     ];
+    public function getAuthPassword()
+    {
+        return $this->pwd;
+    }
 
     /**
      * The attributes that should be hidden for arrays.
