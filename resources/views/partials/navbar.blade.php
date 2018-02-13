@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-light navbar-expand-md bg-white p-1">
     <div class="container">
-        <a href="#" class="navbar-brand">Portale</a>
+        <a href="{{route('home')}}" class="navbar-brand">{{ config('app.name', 'Laravel') }}</a>
         <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
@@ -17,12 +17,13 @@
                 </li>
                 @else
                 <li class="dropdown">
-                    <a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle nav-link dropdown-toggle">
+                    <a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle">
                         <i class="fa fa-user-circle" style="font-size:26px;"></i>
                     </a>
-                    <div role="menu" class="dropdown-menu">
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();" class="nav-link">
+                    <div role="menu" class="dropdown-menu  align-text-center">
+                        <h6 class="dropdown-header">{{$utente->nome." ".$utente->cognome}}</h6>
+                        <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
                             Logout
                         </a>
 

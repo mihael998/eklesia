@@ -23,6 +23,8 @@
     </ul>
 
     <div class="position-absolute img-thumbnail" style="width:200px;height:230px;overflow:hidden;right:30px;bottom:-40px">
-        <img alt="Alunno" style="max-height:100%;width:100%" class="" src="{{ asset('img/chiese/'.$chiesa->foto) }}">
+        <div style="position:relative;overflow: hidden;width:190px;height:220px">
+        <img alt="Immagine Chiesa" style="position: absolute;top: -9999px;bottom: -9999px;left: -9999px;right: -9999px;margin: auto;min-width:100%;height:100%" class="" src="{{ $chiesa->foto!=""?asset('img/chiese/'.$chiesa->foto):asset('img/no_image.jpg') }}">
+        </div>
     </div>
 </div>

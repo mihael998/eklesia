@@ -16,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('partials.header-jumbotron',function($view){
             $view->with("chiesa",auth()->user()->chiesa);
         });
+        view()->composer('partials.navbar',function($view){
+            $view->with("utente",auth()->user());
+        });
     }
 
     /**

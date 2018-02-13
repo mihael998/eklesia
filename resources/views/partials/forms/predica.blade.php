@@ -93,7 +93,7 @@
             @endif
         </div>
     </div>
-    <div class="form-row">
+    <div class="form-group">
         <div class="custom-file">
             <input type="file" class="custom-file-input{{ $errors->has('audio') ? ' is-invalid' : '' }}" id="audio" value="{{ old('audio') }}" name="audio">
             <label class="custom-file-label" for="audio" type="file">Scegli file</label>
