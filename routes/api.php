@@ -13,12 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-<<<<<<< HEAD
-Route::middleware('auth:api')->get('utente', "AuthApi\LoginController@index");
-=======
 Route::middleware('auth:api')->get('/utente', function (Request $request) {
     return response()->json([
         'message' => 'ok'
     ]);
 });
->>>>>>> 12491725e19b007503f7424f97a423317a00a187
