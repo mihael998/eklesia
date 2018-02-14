@@ -5,7 +5,7 @@ namespace App\Http\Controllers\AuthApi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-
+use App\Utente;
 
 class LoginController extends Controller
 {
@@ -41,10 +41,11 @@ class LoginController extends Controller
     {
         $this->validator($request->all())->validate();
         $utente = new Utente($request->all());
-        utenti()->save($utente);
-
+        $utente->pwd=bcrypt($request->input("password"));
+        $utente->save();
+    
         return response()->json([
-            "message" => "OK"
+            "message" => "ok"
         ]);
     }
 
@@ -100,10 +101,8 @@ class LoginController extends Controller
             'cognome' => 'required|string|max:255',
             'data_nascita' => 'required|date',
             'sesso'=>'required|boolean',
-            'email' => 'required|string|max:1000',
-            'password' => 'required|string',
-            'client_id'=>'3',
-            'client_secret'=>'PgAXIt0XZFe32G7BbJKOKWEUriZd720rj2AXJ19'
+            'email' => 'required|string|max:255',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 }
