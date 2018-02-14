@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Utente;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -37,7 +39,7 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function login(Request $request)
     {
         $this->validator($request->all())->validate();
         $utente = new Utente($request->all());
@@ -55,9 +57,18 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function logout(Request $request)
     {
-        //
+        $request->user('api')->token()->revoke();
+
+
+        Session::flush();
+
+        Session::regenerate();
+
+        return response()->json([
+            'message' => 'User was logged out'
+        ]);
     }
 
     /**
@@ -101,7 +112,7 @@ class LoginController extends Controller
             'cognome' => 'required|string|max:255',
             'data_nascita' => 'required|date',
             'sesso'=>'required|boolean',
-            'email' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }

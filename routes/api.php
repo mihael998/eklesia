@@ -14,4 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('utente', "AuthApi\LoginController@index");
-Route::post('utente', "AuthApi\LoginController@store");
+Route::post('utente', "AuthApi\LoginController@login");
+Route::middleware('auth:api')->post('utente/logout', "AuthApi\LoginController@logout");
