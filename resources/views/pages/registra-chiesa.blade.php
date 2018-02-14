@@ -23,9 +23,10 @@
                             <div class="form-group col-md-6">
                                 <label for="email" class="control-label">Email</label>
 
-                                <input id="email" type="email" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus> @if ($errors->has('email'))
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus> 
+                                @if ($errors->has('email'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    {{ $errors->first('email') }}
                                 </span>
                                 @endif
                             </div>
@@ -34,17 +35,17 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="indirizzo" class=" control-label">Indirizzo</label>
-
-                                <input id="indirizzo" type="text" class="form-control" name="indirizzo" value="{{ old('indirizzo') }}" required> @if ($errors->has('indirizzo'))
+                                <input id="indirizzo" type="text" class="form-control{{ $errors->has('indirizzo') ? ' is-invalid' : '' }}" name="indirizzo" value="{{ old('indirizzo') }}" required> 
+                                @if ($errors->has('indirizzo'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('indirizzo') }}</strong>
+                                    {{ $errors->first('indirizzo') }}
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="regione" class="control-label">Regione</label>
 
-                                <select id="regione" class="form-control" name="regione" value="{{ old('regione') }}" required autofocus>
+                                <select id="regione" class="form-control{{ $errors->has('regione') ? ' is-invalid' : '' }}" name="regione" value="{{ old('regione') }}" required autofocus>
                                     <option disabled selected value> Scegli regione </option>
                                     @foreach ($regioni as $regione)
                                     <option value="{{$regione->id}}">{{$regione->nome}}</option>
@@ -53,19 +54,19 @@
 
                                 @if ($errors->has('regione'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('regione') }}</strong>
+                                    {{ $errors->first('regione') }}
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="provincia" class="control-label">Provincia</label>
 
-                                <select id="provincia" class="form-control" name="provincia" value="{{ old('provincia') }}" disabled>
+                                <select id="provincia" class="form-control{{ $errors->has('provincia') ? ' is-invalid' : '' }}" name="provincia" value="{{ old('provincia') }}" disabled>
                                 </select>
 
                                 @if ($errors->has('provincia'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('provincia') }}</strong>
+                                    {{ $errors->first('provincia') }}
                                 </span>
                                 @endif
                             </div>
@@ -73,12 +74,12 @@
                             <div class="form-group col-md-3">
                                 <label for="comune" class="control-label">Comune</label>
 
-                                <select id="comune" class="form-control" name="comune" value="{{ old('comune') }}" disabled>
+                                <select id="comune" class="form-control{{ $errors->has('comune') ? ' is-invalid' : '' }}" name="comune" value="{{ old('comune') }}" disabled>
                                 </select>
 
                                 @if ($errors->has('comune'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('comune') }}</strong>
+                                    {{ $errors->first('comune') }}
                                 </span>
                                 @endif
                             </div>
@@ -89,24 +90,24 @@
                             <div class="form-group col-md-4">
                                 <label for="telefono" class="control-label">Telefono</label>
 
-                                <input id="telefono" type="text" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" name="telefono" value="{{ old('telefono') }}" required autofocus> @if ($errors->has('telefono'))
+                                <input id="telefono" type="text" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" name="telefono" value="{{ old('telefono') }}" required autofocus> @if ($errors->has('telefono'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('telefono') }}</strong>
+                                    {{ $errors->first('telefono') }}
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="sito" class="control-label">Sito</label>
 
-                                <input id="sito" type="text" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" name="sito" value="{{ old('sito') }}" required autofocus> @if ($errors->has('sito'))
+                                <input id="sito" type="text" class="form-control{{ $errors->has('sito') ? ' is-invalid' : '' }}" name="sito" value="{{ old('sito') }}" required autofocus> @if ($errors->has('sito'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('sito') }}</strong>
+                                    {{ $errors->first('sito') }}
                                 </span>
                                 @endif
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="congregazione" class="control-label">Congregazione</label>
-                                <select id="congregazione" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" name="congregazione" value="{{ old('congregazione') }}" >
+                                <select id="congregazione" class="form-control{{ $errors->has('congregazione') ? ' is-invalid' : '' }}" name="congregazione" value="{{ old('congregazione') }}" >
                                     <option value="">Nessuna</option>
                                     @foreach ($congregazioni as $congregazione)
                                     <option value="{{$congregazione->id}}">{{$congregazione->nome}}</option>
@@ -114,7 +115,7 @@
                                 </select>
                                 @if ($errors->has('congregazione'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('congregazione') }}</strong>
+                                    {{ $errors->first('congregazione') }}
                                 </span>
                                 @endif
                             </div>
@@ -123,6 +124,11 @@
                             <div class="bd-example">
                                 <div class="custom-file">
                                     <input type="file" name="foto" class="custom-file-input" id="customFile">
+                                    @if ($errors->has('foto'))
+                                    <span class="invalid-feedback">
+                                        {{ $errors->first('foto') }}
+                                    </span>
+                                    @endif
                                     <label class="custom-file-label" for="customFile">Scegli immagine copertina della chiesa</label>
                                 </div>
                             </div>

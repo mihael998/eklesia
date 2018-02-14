@@ -47,6 +47,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $messages = [
+            'required' => 'Il campo deve essere compilato.',
+            'confirmed' => 'La password e la sua conferma non corrispondono.',
+            'unique' => 'Esiste già un account con l\'email inserita.',
+        ];
         return Validator::make($data, [
             'telefono' => 'required|string|max:255',
             'ruolo' => 'required|integer|between:1,4',
@@ -54,7 +59,7 @@ class RegisterController extends Controller
             'nome' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:admin',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+        ],$messages);
     }
 
     /**
