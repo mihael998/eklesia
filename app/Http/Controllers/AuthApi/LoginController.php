@@ -4,6 +4,8 @@ namespace App\Http\Controllers\AuthApi;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+
 
 class LoginController extends Controller
 {
@@ -37,7 +39,13 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+        $utente = new Utente($request->all());
+        utenti()->save($utente);
+
+        return response()->json([
+            "message" => "OK"
+        ]);
     }
 
     /**
@@ -83,5 +91,19 @@ class LoginController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'nome' => 'required|string|max:255',
+            'cognome' => 'required|string|max:255',
+            'data_nascita' => 'required|date',
+            'sesso'=>'required|boolean',
+            'email' => 'required|string|max:1000',
+            'password' => 'required|string',
+            'client_id'=>'3',
+            'client_secret'=>'PgAXIt0XZFe32G7BbJKOKWEUriZd720rj2AXJ19'
+        ]);
     }
 }
