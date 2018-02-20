@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "eklesia-195019",
+  "private_key_id": "4a3fdb8ae437c7a50da7dc2c3e062fa96486d80e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDMO4OFSeRJ1xA8\ns8iESdyfmCDGnMyGt77OffISXAh3RdF4bpTQDlw3l73AYOV1BTk6uX2JH5mICuOk\naIDA+6FCpsjgUbCgAZGtbFpr32B/qTQ+fGpoP0Fg7kIQScM7ce9zSijZMnn6TT+t\noaXkfAPzPfPDe4pI6/alYAFdLldwJz/2t7JrWZEg0Gp1J8hWWe3b2+0zgnNp9MmY\nwgPmCBSd/9GEETo4OD7rMaVJ3Gvwlqa6FkzqxMXDFJUOT3IjzJxX5bs+XmgdkQfe\nqkxhuz7QK21lJl6qIS8jfwg7u+YVUQK2fYuE2A1cwxzvNU2vECu9a3ObEX8FwwXu\nUcWFWzfHAgMBAAECggEADz0ZkSZ0TDYp1f2sJoLEXXwiZe9pK1wmdo3bNBd94jhp\nas0FeYi4xMUjuWkBdfvPy1vvy/15nTcCyU+q27tqyuha8LHnteioEAKXtJjUQHJF\nnav23JRrsmnUsBZw5MyZi0arSZmElHKTH8eB80x1lv62Y42iQdKpcql5MJS2nX2O\nBcZAi5T5K8lzzgrq4gopTNNVEB+SfaR1TJVwIvsgWRUv+qU6qmrqD7JVe8Hm8ujj\ni5Mzoq0LkeJQKyM7/Eh8NhKkciqlhixVbpDYfT0XLRD13qUrrNoeDT/f/3V1dbFM\nCNf4MGtg0Fu5gj/r8Vi6gaVUsHwCdOhHK/Z+UR1YkQKBgQD2qZTHHbqCl4h94LyT\nrTDtQTo1F5HHQkiKoHvw7CaGuJVRK7F4u3zlF506VgoujcwdMPlyQp2FjRiKgBKN\nKyNVU7mEeMml8o+sSTbdcbkxMzr3VwP/bJb35LVOMFv+nDR0lmDOV7xhtyW7xFDG\nYfG5sj/GHcf32TYKtcnzORSvWwKBgQDT9r3dEn0yuU6lgzWnXZ1B/fZTTuXATJVf\nDypKPNM+urioxP41Tsn7+u11awGHXmbwv7qUMqPwlmwtCCTbyF5IqY88fPbhvtqj\nXQBPGm9XhoaOk5Ok+MK1V2Wra7ryuIWxFsse8uplMf5yVxt83oRUZJiNQBqSVEyw\ncy6ZduhRBQKBgQDEi3oGc1TTjGVxUCtTTPSoiIoWFhLOAK4G8DvyTGmifeBVDoja\nmCK79WYOPtLcJ5bWR9jsR9J2wWglrEmb/RypeA5iVVDwj2gWMzyplV2oq5a30blY\nxTFClBY4GGaladiOcejvYo+0GRjTFmn6ub7AZh1VAxP9FTJvtE0YJoqp8wKBgAbI\nQWD+g3UJCuQu45ucWjjPWH9n6eASU0E8af0AHz5FmT0FOKEaCUp/x/NW3jCnq6GO\ncPjm+enr1kBGn29M5P9sNYIY+YlVowdRJX5ieSeSzWFohXPk5c4Jot4uT0gO8XAu\nK4es/CUKyXp9IQsIz7Enmt4CLBd8jQukU9xjOqHFAoGBAM7ktzXLjUIKIBUEYswC\na/l5Fsx5+TR8U8q0ssHoUnA7qpnIqH18ACcU0XEes05XM4IoscYPtQBSmhDMIyn+\nD0q0EXI5Pm0i91zdOfR7A37jdlWjb5fphalxoKc1b0QflaHiGowmXL7TNjSoXl3w\n4mji6jDmdPOk5aw5E9wjPFd5\n-----END PRIVATE KEY-----\n",
+  "client_email": "connesione-sql@eklesia-195019.iam.gserviceaccount.com",
+  "client_id": "118260747049744371362",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/connesione-sql%40eklesia-195019.iam.gserviceaccount.com"
+}

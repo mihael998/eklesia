@@ -1,0 +1,28 @@
+runtime: php
+env: flex
+ 
+runtime_config:
+  document_root: public
+ 
+# Ensure we skip ".env", which is only for local development
+skip_files:
+  - .env
+ 
+env_variables:
+  # Put production environment variables here.
+  APP_LOG: errorlog
+  APP_KEY: "base64:eii6fGvvngtIISyt/U892fwFj4UeXaDacSIYCTa9QuQ="
+  STORAGE_DIR: /tmp
+  CACHE_DRIVER: database
+  SESSION_DRIVER: database
+  ## Set these environment variables according to your CloudSQL configuration.
+  DB_HOST: localhost
+  DB_DATABASE: eklesia
+  DB_USERNAME: root
+  DB_PASSWORD: -Tevere1996
+  DB_SOCKET: "/cloudsql/eklesia-195019:europe-west1:eklesia-mysql"
+
+beta_settings:
+    # for Cloud SQL, set this value to the Cloud SQL connection name,
+    # e.g. "project:region:cloudsql-instance"
+    cloud_sql_instances: "eklesia-195019:europe-west1:eklesia-mysql"
