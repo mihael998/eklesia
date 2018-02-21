@@ -9,6 +9,10 @@ use App\Chiesa;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Google\Cloud\Storage\StorageClient;
+use Google\Cloud\Core\ServiceBuilder;
+use League\Flysystem\Filesystem;
+use Superbalist\Flysystem\GoogleStorage\GoogleStorageAdapter;
 
 class ChiesaController extends Controller
 {
@@ -59,11 +63,16 @@ class ChiesaController extends Controller
         $chiesa->abilitato = 1;
         $chiesa->id_comune = $request->input("comune");
         $chiesa->id_congregazione = $request->input("congregazione");
+
+
+        $disk = Storage::disk('gcs');
+
         if ($request->hasFile('foto')) {
             $image = $request->file('foto');
             $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/img/chiese');
-            $image->move($destinationPath, $name);
+            //$destinationPath = public_path('/img/chiese');
+            $disk->putFileAs('public/img/chiese', $image, $name);
+            //$image->move($destinationPath, $name);
             $chiesa->foto = $name;
         }
 
@@ -128,22 +137,23 @@ class ChiesaController extends Controller
     public function update(Request $request)
     {
         $this->validator($request->all())->validate();
-        $chiesa=auth()->user()->chiesa;
+        $chiesa = auth()->user()->chiesa;
         $chiesa->update($request->all());
         $chiesa = auth()->user()->chiesa;
         $chiesa->id_comune = $request->input("comune");
-        
+
         $chiesa->id_congregazione = $request->input("congregazione");
+        $disk = Storage::disk('gcs');
         if ($request->hasFile('foto')) {
-            if(File::exists("img/chiese/".$chiesa->foto))
-            File::delete("img/chiese/".$chiesa->foto);
+            if ($disk->exists('public/img/chiese/' . $chiesa->foto))
+                $disk->delete('public/img/chiese/' . $chiesa->foto);
             $image = $request->file('foto');
-            $name = time() .$chiesa->id.'.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/img/chiese');
-            $image->move($destinationPath, $name);
+            $name = time() . $chiesa->id . '.Mihael.' . $image->getClientOriginalExtension();
+            $disk->putFileAs('public/img/chiese', $image, $name);
             $chiesa->foto = $name;
+
         }
-        
+
         $chiesa->save();
 
         return redirect()->to("chiesa/home");

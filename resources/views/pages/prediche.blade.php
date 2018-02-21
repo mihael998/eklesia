@@ -99,7 +99,7 @@
                                 </a>
                                 <div class="dropdown-menu p-2" aria-labelledby="dropdownAudioLink" id="dropdownAudio">
                                     <audio controls class="align-middle">
-                                        <source src="{{ asset('audio/prediche/'.$predica->audio) }}" type="audio/mpeg" />
+                                        <source src="{{ Storage::disk('gcs')->url('public/audio/prediche/'.$predica->audio) }}" type="audio/mpeg" />
                                         An html5-capable browser is required to play this audio. 
                                     </audio>
                                 </div>

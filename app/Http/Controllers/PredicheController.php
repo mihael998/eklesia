@@ -49,11 +49,11 @@ class PredicheController extends Controller
     {
         $this->validator($request->all())->validate();
         $predica = new Predica($request->all());
+        $disk = Storage::disk('gcs');
         if ($request->hasFile('audio')) {
             $audio = $request->file('audio');
-            $name = time() . $predica->titolo . $predica->autore . '.' . $audio->getClientOriginalExtension();
-            $destinationPath = public_path('/audio/prediche');
-            $audio->move($destinationPath, $name);
+            $name = time() . $predica->id . '.' . $audio->getClientOriginalExtension();
+            $disk->putFileAs('public/audio/prediche', $audio, $name);
             $predica->audio = $name;
         }
         auth()->user()->chiesa->prediche()->save($predica);

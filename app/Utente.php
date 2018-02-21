@@ -17,5 +17,10 @@ class Utente extends Authenticatable
     {
         return $this->pwd;
     }
-
+    public function chieseSeguite(){
+        return $this->belongsToMany(Chiesa::class, 'utenti_chiese', 'id_utente', 'id_chiesa');
+    }
+    public function eventiSeguiti(){
+        return $this->belongsToMany(Evento::class, 'utenti_eventi', 'id_utente', 'id_evento');
+    }
 }

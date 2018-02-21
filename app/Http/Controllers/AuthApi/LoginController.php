@@ -18,8 +18,10 @@ class LoginController extends Controller
      */
     public function index()
     {
+        $utente=auth()->user()->with(['chieseSeguite:id', 'eventiSeguiti:id'])->get();
         return response()->json([
-            "message"=>"Authenticated"
+            "message"=>"Authenticated",
+            "utente"=> $utente
         ]);
     }
 
