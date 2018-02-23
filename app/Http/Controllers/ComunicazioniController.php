@@ -85,7 +85,14 @@ class ComunicazioniController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validator($request->all())->validate();
+        $comunicazione=Comunicazione::find($id);
+        if(!$request->filled("descrizione")){
+            $request->merge(["descrizione" => $request->input("titolo")]);
+        }
+        $comunicazione->update($request->all());
+
+        return redirect()->to("chiesa/comunicazioni");
     }
 
     /**

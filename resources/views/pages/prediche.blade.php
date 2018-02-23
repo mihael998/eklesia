@@ -33,7 +33,7 @@
             $('#exampleModalCenter').modal('show');
         @endif
     </script>
-    
+
 @endsection
 @section('content')
 <div class="container">
@@ -70,7 +70,7 @@
                     @endcomponent
                 @endslot
             @endcomponent
-            
+
         @endcomponent
         {{--  //contenuto  --}}
         @php
@@ -100,7 +100,7 @@
                                 <div class="dropdown-menu p-2" aria-labelledby="dropdownAudioLink" id="dropdownAudio">
                                     <audio controls class="align-middle">
                                         <source src="{{ Storage::disk('gcs')->url('public/audio/prediche/'.$predica->audio) }}" type="audio/mpeg" />
-                                        An html5-capable browser is required to play this audio. 
+                                        An html5-capable browser is required to play this audio.
                                     </audio>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#"><i class="fa fa-pencil align-text-center p-1 px-2"></i> Modifica</a>
                             </div>
-                        </td>           
+                        </td>
                     </tr>
                 @endforeach
             @endslot

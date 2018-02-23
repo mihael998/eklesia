@@ -17,6 +17,7 @@ env_variables:
   GCS_BASE_URL: https://storage.googleapis.com
   GCS_REGION: europe-west
   APP_LOG: errorlog
+  APP_NAME: Eklesia
   APP_KEY: base64:eii6fGvvngtIISyt/U892fwFj4UeXaDacSIYCTa9QuQ=
   APP_DEBUG: true
   STORAGE_DIR: /tmp

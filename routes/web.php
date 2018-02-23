@@ -34,6 +34,7 @@ Route::delete('chiesa/incontri/{id}','IncontriController@destroy')->name('elimin
 Route::get('chiesa/comunicazioni','ComunicazioniController@index')->name("comunicazioni");
 Route::post('chiesa/comunicazioni','ComunicazioniController@store')->name('aggiungiComunicazione');
 Route::delete('chiesa/comunicazioni/{id}','ComunicazioniController@destroy')->name('eliminaComunicazione');
+Route::patch('chiesa/comunicazioni/{id}','ComunicazioniController@update')->name('modificaComunicazione');
 
 //routes Eventi
 Route::get('chiesa/eventi','EventiController@index')->name("eventi");
@@ -44,4 +45,3 @@ Route::delete('chiesa/eventi/{id}','EventiController@destroy')->name('eliminaEve
 Route::get('chiesa/prediche','PredicheController@index')->name("prediche");
 Route::post('chiesa/prediche','PredicheController@store')->name('aggiungiPredica');
 Route::delete('chiesa/prediche/{id}','PredicheController@destroy')->name('eliminaPredica');
-

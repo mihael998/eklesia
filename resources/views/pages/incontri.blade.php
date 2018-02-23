@@ -36,7 +36,7 @@
                         {{ csrf_field() }}
                     <div class="form-row">
                         <div class="form-group col-md-8">
-                            <label for="titolo">Nome:</label>
+                            <label for="titolo">Nome</label>
                             <input id="titolo" type="text" class="form-control{{ $errors->has('titolo') ? ' is-invalid' : '' }}" value="{{ old('titolo') }}" name="titolo" required>
                             @if ($errors->has('titolo'))
                                 @component('partials.errors.invalid-input')
@@ -50,7 +50,7 @@
                             @endif
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="giorno">Giorno:</label>
+                            <label for="giorno">Giorno</label>
                             <select id="giorno" type="text" class="form-control{{ $errors->has('giorno') ? ' is-invalid' : '' }}" name="giorno" value="{{ old('fine') }}" required>
                                 <option value="1">Lunedì</option>
                                 <option value="2">Martedì</option>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="inizio">Orario d'inzio:</label>
+                            <label for="inizio">Orario d'inzio</label>
                             <input id="inizio" type="time" class="form-control{{ $errors->has('inizio') ? ' is-invalid' : '' }}" value="{{ old('fine') }}" name="inizio" required>
                             @if ($errors->has('inizio'))
                                 @component('partials.errors.invalid-input')
@@ -88,7 +88,7 @@
                             @endif
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="fine">Orario fine:</label>
+                            <label for="fine">Orario fine</label>
                             <input id="fine" type="time" class="form-control{{ $errors->has('fine') ? ' is-invalid' : '' }}" value="{{ old('fine') }}" name="fine" required>
                             @if ($errors->has('fine'))
                                 @component('partials.errors.invalid-input')
