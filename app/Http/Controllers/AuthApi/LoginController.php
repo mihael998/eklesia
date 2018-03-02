@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Utente;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use GuzzleHttp\Psr7\Response;
 
 class LoginController extends Controller
 {
@@ -18,11 +19,28 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $utente=auth()->user()->with(['chieseSeguite:id', 'eventiSeguiti:id'])->get();
+        // $utente = Auth::guard("api")->user()->with(['chieseSeguite:id', 'eventiSeguiti:id'])->get();
+        $utente=Auth::guard("api")->user();
+        $risposta=$utente->with(['chieseSeguite:id', 'eventiSeguiti:id'])->where('utenti.id',$utente->id)->first();
         return response()->json([
-            "message"=>"Authenticated",
-            "utente"=> $utente
+            "message" => "Authenticated",
+            "utente" => $risposta
         ]);
+    }
+
+    public function mailVerification($mail)
+    {
+        $user = Utente::where('email', $mail)->first();
+        if ($user) {
+            return response()->json([
+                'message' => "L'email è già in uso"
+            ],404);
+        }
+        else{
+            return response()->json([
+                'message' => "ok"
+            ]);
+        }
     }
 
     /**
@@ -45,9 +63,9 @@ class LoginController extends Controller
     {
         $this->validator($request->all())->validate();
         $utente = new Utente($request->all());
-        $utente->pwd=bcrypt($request->input("password"));
+        $utente->pwd = bcrypt($request->input("password"));
         $utente->save();
-    
+
         return response()->json([
             "message" => "ok"
         ]);
@@ -113,8 +131,8 @@ class LoginController extends Controller
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
             'data_nascita' => 'required|date',
-            'sesso'=>'required|boolean',
-            'email' => 'required|email|max:255',
+            'sesso' => 'required|boolean',
+            'email' => 'required|email|max:255|unique:utenti',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
