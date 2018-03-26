@@ -139,8 +139,28 @@
                 @endif
             </div>
         </div>
-        <div class="form-group">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="denominazione" class="control-label">Denominazione</label>
+                <select id="denominazione" class="form-control{{ $errors->has('denominazione') ? ' is-invalid' : '' }}" name="denominazione" value="{{ old('denominazione') }}" >
+                    <option value="">Nessuna</option>
+                    @foreach (App\Denominazione::all() as $denominazione)
+                    @if ($denominazione->id==$chiesa->id_denominazione)
+                            <option value="{{$denominazione->id}}" selected>{{$denominazione->nome}}</option>
+                        @else
+                            <option value="{{$denominazione->id}}">{{$denominazione->nome}}</option>
+                        @endif
+                    @endforeach
+                </select>
+                @if ($errors->has('denominazione'))
+                <span class="invalid-feedback">
+                    {{ $errors->first('denominazione') }}
+                </span>
+                @endif
+            </div>
+            <div class="form-group">
                 <div class="bd-example">
+                    <label for="file" class="control-label">File</label>
                     <div class="custom-file">
                         <input type="file" name="foto" class="custom-file-input" id="customFile">
                         @if ($errors->has('foto'))
@@ -152,6 +172,7 @@
                     </div>
                 </div>
             </div>
+        </div>
 
 
 

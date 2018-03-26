@@ -120,16 +120,33 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="bd-example">
-                                <div class="custom-file">
-                                    <input type="file" name="foto" class="custom-file-input" id="customFile">
-                                    @if ($errors->has('foto'))
-                                    <span class="invalid-feedback">
-                                        {{ $errors->first('foto') }}
-                                    </span>
-                                    @endif
-                                    <label class="custom-file-label" for="customFile">Scegli immagine copertina della chiesa</label>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="denominazione" class="control-label">Denominazione</label>
+                                <select id="denominazione" class="form-control{{ $errors->has('denominazione') ? ' is-invalid' : '' }}" name="denominazione" value="{{ old('denominazione') }}" >
+                                    <option value="">Nessuna</option>
+                                    @foreach (App\Denominazione::all() as $denominazione)
+                                    <option value="{{$denominazione->id}}">{{$denominazione->nome}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('denominazione'))
+                                <span class="invalid-feedback">
+                                    {{ $errors->first('denominazione') }}
+                                </span>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <div class="bd-example">
+                                        <label for="file" class="control-label">File</label>
+                                    <div class="custom-file">
+                                        <input type="file" name="foto" class="custom-file-input" id="customFile">
+                                        @if ($errors->has('foto'))
+                                        <span class="invalid-feedback">
+                                            {{ $errors->first('foto') }}
+                                        </span>
+                                        @endif
+                                        <label class="custom-file-label" for="customFile">Scegli immagine copertina della chiesa</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

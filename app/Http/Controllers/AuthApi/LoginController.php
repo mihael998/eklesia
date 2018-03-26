@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Utente;
+use App\Chiesa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use GuzzleHttp\Psr7\Response;
+use League\Fractal;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Item;
+use League\Fractal\Serializer\ArraySerializer;
+use App\Http\Transformer\ChiesaTransformer;
 
 class LoginController extends Controller
 {
@@ -20,11 +26,28 @@ class LoginController extends Controller
     public function index()
     {
         // $utente = Auth::guard("api")->user()->with(['chieseSeguite:id', 'eventiSeguiti:id'])->get();
-        $utente=Auth::guard("api")->user();
-        $risposta=$utente->with(['chieseSeguite:id', 'eventiSeguiti:id'])->where('utenti.id',$utente->id)->first();
         return response()->json([
-            "message" => "Authenticated",
-            "utente" => $risposta
+            "message" => "Authenticated"
+        ]);
+    }
+
+    public function utente(){
+
+        $manager = new Manager();
+        $utente=Auth::guard("api")->user();
+        $manager->setSerializer(new ArraySerializer());
+        $chiesa=$utente->chiesa;
+        if($chiesa!=null){
+            $resource = new Fractal\Resource\Item($chiesa, new ChiesaTransformer);
+            $chiesa=$manager->createData($resource)->toArray();
+        }
+        
+
+        $risposta=$utente->with(['chieseSeguite:id', 'eventiSeguiti:id'])->where('utenti.id',$utente->id)->first();
+        
+        return response()->json([
+            "utente" => $risposta,
+            'chiesa' => $chiesa
         ]);
     }
 

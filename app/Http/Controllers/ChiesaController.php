@@ -63,6 +63,7 @@ class ChiesaController extends Controller
         $chiesa->abilitato = 1;
         $chiesa->id_comune = $request->input("comune");
         $chiesa->id_congregazione = $request->input("congregazione");
+        $chiesa->id_denominazione = $request->input("denominazione");
 
 
         $disk = Storage::disk('gcs');
@@ -89,6 +90,7 @@ class ChiesaController extends Controller
             'indirizzo' => 'required|string',
             'comune' => 'required|integer|exists:comuni,id',
             'congregazione' => 'nullable|integer|exists:congregazioni,id',
+            'denominazione' => 'nullable|integer|exists:denominazioni,id',
             'email' => 'nullable|string|email|max:255',
             'sito' => 'nullable|string|max:255',
             'telefono' => 'nullable|string|max:255',
@@ -141,6 +143,7 @@ class ChiesaController extends Controller
         $chiesa->update($request->all());
         $chiesa = auth()->user()->chiesa;
         $chiesa->id_comune = $request->input("comune");
+        $chiesa->id_denominazione = $request->input("denominazione");
 
         $chiesa->id_congregazione = $request->input("congregazione");
         $disk = Storage::disk('gcs');

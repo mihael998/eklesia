@@ -13,6 +13,10 @@ class Utente extends Authenticatable
     protected $table = 'utenti';
     public $timestamps = false;
     protected $fillable = ['nome', 'email', 'pwd', 'cognome', 'sesso', 'data_nascita'];
+    public function chiesa(){
+        return $this->belongsTo(Chiesa::class,'id_chiesa');
+    }
+
     public function getAuthPassword()
     {
         return $this->pwd;
