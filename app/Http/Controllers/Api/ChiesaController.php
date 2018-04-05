@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use App\Http\Transformer\ChiesaTransformer;
 
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use League\Fractal\Serializer\ArraySerializer;
 use Illuminate\Support\Facades\Storage;
-
+use DB;
 class ChiesaController extends Controller
 {
     /**
@@ -19,9 +20,21 @@ class ChiesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $place_id = $request->input('place_id');
+        $distanza = $request->input('distanza');
+        $denominazioni = $request->input('denominazioni');
+        $congregazioni = $request->input('congregazioni');
+        $risposta=DB::table('chiese')
+            ->join('comuni','chiese.id_comune','=','comuni.id');
+        return response()->json([
+            "place_id" => $place_id,
+            "distanza" => $distanza,
+            "denominazioni" => $denominazioni,
+            "congregazioni" => $congregazioni
+        ]);
+
     }
 
     /**
@@ -55,24 +68,23 @@ class ChiesaController extends Controller
     {
         $manager = new Manager();
         $manager->setSerializer(new ArraySerializer());
-        $chiesa=Chiesa::find($id);
-    
-        $resource = new Fractal\Resource\Item($chiesa, new ChiesaTransformer);
-        $risposta=$manager->createData($resource)->toArray();
+        $chiesa = Chiesa::find($id);
 
-        if($chiesa->abilitato==1){
+        $resource = new Fractal\Resource\Item($chiesa, new ChiesaTransformer);
+        $risposta = $manager->createData($resource)->toArray();
+
+        if ($chiesa->abilitato == 1) {
             return response()->json([
                 "message" => "Ok",
                 "chiesa" => $risposta
             ]);
-        }
-        else{
+        } else {
             return response()->json([
                 "message" => "Profilo chiesa non attivo",
                 "chiesa" => $risposta
-            ],404);
+            ], 404);
         }
-        
+
 
 
     }
