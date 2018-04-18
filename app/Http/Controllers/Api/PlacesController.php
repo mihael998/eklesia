@@ -50,7 +50,7 @@ class PlacesController extends Controller
     {
         $googlePlaces = new PlacesApi('AIzaSyAjNAMBlIRSGCIjL-kNPAadRKDQVONPJ8U');
         $lingua["language"]="it";
-        $response = $googlePlaces->placeAutocomplete($filter,$lingua);
+        $response = $googlePlaces->placeDetails($filter,$lingua);
         return response()->json($response);
     }
 
